@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modal avec carrousel d'images</title>
+    <!-- Inclure les styles de Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#" th:data-slide-to="0" th:data-target="'#carouselModal'">
+                <img class="img-fluid" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#" th:data-slide-to="1" th:data-target="'#carouselModal'">
+                <img class="img-fluid" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="#" th:data-slide-to="2" th:data-target="'#carouselModal'">
+                <img class="img-fluid" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="carouselModalLabel" class="modal fade" id="carouselModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button aria-label="Fermer" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="carousel slide" data-ride="carousel" id="carouselIndicators">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carouselIndicators"></li>
+                        <li data-slide-to="1" data-target="#carouselIndicators"></li>
+                        <li data-slide-to="2" data-target="#carouselIndicators"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a data-slide="next" href="#carouselIndicators">
+                                <img class="d-block w-100" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a data-slide="next" href="#carouselIndicators">
+                                <img class="d-block w-100" th:src="'data:image/png;base64,' + ${backgroundImage2}">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a data-slide="next" href="#carouselIndicators">
+                                <img class="d-block w-100" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Inclure jQuery et les scripts de Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+<!-- Script pour ouvrir la modal lorsqu'on clique sur une image -->
+<script th:inline="javascript">
+    $(function() {
+      $('[data-target="#carouselModal"]').click(function(e) {
+        e.preventDefault();
+        var slideIndex = $(this).data('slide-to');
+        $('#carouselIndicators').carousel(slideIndex);
+        $('#carouselModal').modal('show');
+      });
+    });
+
+    $(function() {
+        $('[data-slide-to]').click(function() {
+            var slideIndex = $(this).data('slide-to');
+            $('#carouselIndicators').carousel(slideIndex);
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

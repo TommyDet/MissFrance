@@ -1,0 +1,17 @@
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
+logging:
+  level:
+    fr:
+      missfrance: debug
+spring:
+  thymeleaf:
+    content-type: text/html
+    suffix: .html
+    cache: true
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/

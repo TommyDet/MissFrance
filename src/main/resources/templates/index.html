@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img alt="Image 1" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+        </div>
+        <div class="col-md-10">
+            <img alt="Image 2" th:src="'data:image/png;base64,' + ${backgroundImage2}">
+        </div>
+    </div>
+</div>
+<br>
+<a href="/photo">Ajouter une photo</a>
+<br>
+<a href="/candidates">Voir les candidates</a>
+</body>
+</html>
