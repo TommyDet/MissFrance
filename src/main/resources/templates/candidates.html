@@ -5,25 +5,44 @@
     <title>Modal avec carrousel d'images</title>
     <!-- Inclure les styles de Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        .image-container {
+        position: relative;
+    }
+
+    .region-name {
+        display: block;
+        position: absolute;
+        width: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+    </style>
 </head>
 <body>
+
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <a href="#" th:data-slide-to="0" th:data-target="'#carouselModal'">
-                <img class="img-fluid" th:src="'data:image/png;base64,' + ${backgroundImage1}">
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="#" th:data-slide-to="1" th:data-target="'#carouselModal'">
-                <img class="img-fluid" th:src="'data:image/png;base64,' + ${backgroundImage1}">
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="#" th:data-slide-to="2" th:data-target="'#carouselModal'">
-                <img class="img-fluid" th:src="'data:image/png;base64,' + ${backgroundImage1}">
-            </a>
-        </div>
+        <!-- Utilisez Thymeleaf pour itérer sur votre liste de photos Base64 -->
+        <th:block th:each="infoCandidate : ${infosCandidates}">
+            <div class="col-md-4">
+                <a href="#" th:data-slide-to="0" th:data-target="'#carouselModal'"
+                   th:data-text="${infoCandidate.region}">
+                    <div class="image-container">
+                        <span class="region-name" th:text="${infoCandidate.region}"></span>
+                        <img class="img-fluid"
+                             th:src="'data:image/png;base64,' + ${infoCandidate.photo}">
+                    </div>
+                </a>
+            </div>
+        </th:block>
     </div>
 </div>
 
@@ -33,9 +52,6 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <button aria-label="Fermer" class="close" data-dismiss="modal" type="button">
-                    <span aria-hidden="true">&times;</span>
-                </button>
                 <div class="carousel slide" data-ride="carousel" id="carouselIndicators">
                     <ol class="carousel-indicators">
                         <li class="active" data-slide-to="0" data-target="#carouselIndicators"></li>
@@ -55,7 +71,7 @@
                         </div>
                         <div class="carousel-item">
                             <a data-slide="next" href="#carouselIndicators">
-                                <img class="d-block w-100" th:src="'data:image/png;base64,' + ${backgroundImage1}">
+                                <img class="d-block w-100" th:src="'data:image/png;base64,' + ${backgroundImage3}">
                             </a>
                         </div>
                     </div>
@@ -64,6 +80,7 @@
         </div>
     </div>
 </div>
+
 <!-- Inclure jQuery et les scripts de Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
@@ -74,6 +91,9 @@
     $(function() {
       $('[data-target="#carouselModal"]').click(function(e) {
         e.preventDefault();
+        var button = $(this);
+        var text = button.data('text');
+        console.log(text);
         var slideIndex = $(this).data('slide-to');
         $('#carouselIndicators').carousel(slideIndex);
         $('#carouselModal').modal('show');
@@ -86,17 +106,6 @@
             $('#carouselIndicators').carousel(slideIndex);
         });
     });
-
-
-
-
-
-
-
-
-
-
-
 
 
 </script>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enregistrer une photo</title>
+</head>
+<body>
+<h1>Enregistrer une photo</h1>
+<form enctype="multipart/form-data" method="post" th:action="@{/uploadCandidate}">
+    <input name="region" type="text">
+    <input name="file" type="file"/>
+    <input name="estOfficielle" type="checkbox"/>
+    <input type="submit" value="Enregistrer"/>
+</form>
+</body>
+</html>

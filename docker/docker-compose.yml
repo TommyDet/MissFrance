@@ -1,0 +1,35 @@
+version: '3'
+services:
+  missfrance:
+    image: missfrance
+    ports:
+      - "8090:8080"
+    depends_on:
+      - mongo
+      - mongo-express
+    container_name: missfrance
+
+  mongo:
+    image: mongo
+    networks:
+      - mon-reseau-docker
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongo
+    ports:
+      - "8081:8081"
+    networks:
+      - mon-reseau-docker
+
+
+networks:
+  mon-reseau-docker:
+
+volumes:
+  mongo-data:

@@ -6,8 +6,6 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString
@@ -15,9 +13,8 @@ import java.util.List;
 public class Candidates {
 
     @Id
-    private String username;
-    private int top1;
-    private List<Integer> top5;
-    private List<Integer> top12;
-
+    private String id;
+    private String region;
+    private String photo;
+    private Boolean estOfficielle;
 }

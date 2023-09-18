@@ -14,4 +14,9 @@ spring:
     suffix: .html
     cache: true
     encoding: UTF-8
-    prefix: file:src/main/resources/templates/
+
+  data:
+    mongodb:
+      host: host.docker.internal
+      port: 27017
+      database: test
