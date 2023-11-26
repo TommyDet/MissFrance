@@ -1,7 +1,7 @@
 package fr.missfrance.repository;
 
-import fr.missfrance.dao.UserInfos;
+import fr.missfrance.dao.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends MongoRepository<UserInfos, String> {
+public interface UserRepository extends MongoRepository<User, String> {
 }

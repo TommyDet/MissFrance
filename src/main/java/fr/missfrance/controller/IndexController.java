@@ -1,6 +1,6 @@
 package fr.missfrance.controller;
 
-import fr.missfrance.dao.UserInfos;
+import fr.missfrance.dao.User;
 import fr.missfrance.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,12 +29,12 @@ public class IndexController {
     @GetMapping(value = {"/add"})
     public String add() {
         LOGGER.debug("Entrée dans la méthode add - indexController");
-        UserInfos userInfos = new UserInfos();
-        userInfos.setUsername("Tommy");
-        userInfos.setTop1(1);
-        userInfos.setTop5(List.of(2, 3, 4, 5));
-        userInfos.setTop12(List.of(6, 7, 8, 9, 10, 11, 12));
-        userRepository.save(userInfos);
+        User user = new User();
+        user.setUsername("Tommy");
+        user.setTop1(1);
+        user.setTop5(List.of(2, 3, 4, 5));
+        user.setTop12(List.of(6, 7, 8, 9, 10, 11, 12));
+        userRepository.save(user);
         LOGGER.debug("Sortie de la méthode add - indexController");
         return "index";
     }
