@@ -16,20 +16,18 @@ import java.util.List;
 public class CandidateService {
 
     private static final Logger LOGGER = LogManager.getLogger(CandidateService.class);
-    CandidateService candidateService;
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public String getCandidateByRegion(String region) {
+    public List<Candidates> getCandidateByRegion(String region) {
+        LOGGER.info("Recupération d'une candidate pour la région : {}", region);
 
         Query query = new Query();
         query.addCriteria(Criteria.where("region").is(region));
 
         // Récupération de l'URL de l'image à partir de son champ "name" dans la collection "images"
-        Candidates candidate = mongoTemplate.findOne(query, Candidates.class, "Candidates");
 
-        assert candidate != null;
-        return candidate.getPhoto();
+        return mongoTemplate.find(query, Candidates.class, "Candidates");
     }
 
     public List<Candidates> getCandidateByOfficielle() {

@@ -1,35 +1,10 @@
 version: '3'
 services:
-  missfrance:
-    image: missfrance
+  my_java_app:
+    image: openjdk:17-jdk-slim  # Utilisez l'image Java de votre choix
+    container_name: miss-france
     ports:
-      - "8090:8080"
-    depends_on:
-      - mongo
-      - mongo-express
-    container_name: missfrance
-
-  mongo:
-    image: mongo
-    networks:
-      - mon-reseau-docker
-    ports:
-      - "27017:27017"
+      - "80:8080"  # Remplacez le port selon les besoins de votre application
     volumes:
-      - mongo-data:/data/db
-
-  mongo-express:
-    image: mongo-express
-    depends_on:
-      - mongo
-    ports:
-      - "8081:8081"
-    networks:
-      - mon-reseau-docker
-
-
-networks:
-  mon-reseau-docker:
-
-volumes:
-  mongo-data:
+      - ../target/demo-0.0.1-SNAPSHOT.jar:/app/app.jar  # Remplacez le chemin par l'emplacement de votre JAR
+    command: [ "java", "-jar", "/app/app.jar" ]

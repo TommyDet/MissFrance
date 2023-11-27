@@ -4,7 +4,6 @@ import fr.missfrance.dao.Candidates;
 import fr.missfrance.service.CandidateService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +24,11 @@ public class CandidatesController {
 
     private final CandidateService candidateService;
 
-    @Autowired
     private MongoTemplate mongoTemplate;
 
-    public CandidatesController(CandidateService candidateService) {
+    public CandidatesController(CandidateService candidateService, MongoTemplate mongoTemplate) {
         this.candidateService = candidateService;
+        this.mongoTemplate = mongoTemplate;
     }
 
     @GetMapping("/addCandidates")
