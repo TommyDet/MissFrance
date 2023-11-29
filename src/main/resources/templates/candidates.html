@@ -6,8 +6,23 @@
     <!-- Inclure les styles de Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
-        .image-container {
+    .image-container {
         position: relative;
+    }
+
+    .fixed-column {
+        position: sticky;
+        top: 0;
+        height: 100vh; /* Ajustez cela en fonction de la hauteur souhaitée pour que la colonne reste fixe */
+        overflow-y: auto;
+    }
+
+    .fixed-column select {
+        width: 100%; /* Assurez-vous que la largeur du sélecteur de classe reste à 100% */
+    }
+
+    .container {
+        max-width: 2000px;
     }
 
     .region-name {
@@ -47,25 +62,212 @@
 
 
 
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="row">
-        <!-- Utilisez Thymeleaf pour itérer sur votre liste de photos Base64 -->
-        <th:block th:each="infoCandidate : ${infosCandidates}">
-            <div class="col-md-4">
-                <a href="#" th:data-slide-to="0" th:data-target="'#carouselModal'"
-                   th:data-text="${infoCandidate.region}">
-                    <div class="image-container">
-                        <span class="region-name" th:text="${infoCandidate.region}"></span>
-                        <img class="img-fluid"
-                             th:src="'data:image/png;base64,' + ${infoCandidate.photo}">
-                    </div>
-                </a>
+        <div class="col-2 fixed-column">
+            <div class="form-group">
+                <label for="firstName">Prénom :</label>
+                <input class="form-control" id="firstName" placeholder="Entrez votre prénom" type="text">
             </div>
-        </th:block>
+            <div class="form-group">
+                <label for="rankingSelect1">top 1</label>
+                <select class="form-control" id="rankingSelect1">
+                    <option value="alsace">alsace</option>
+                    <option value="aquitaine">aquitaine</option>
+                    <option value="auvergne">auvergne</option>
+                    <option value="bourgogne">bourgogne</option>
+                    <option value="bretagne">bretagne</option>
+                    <option value="centre val de loire">centre val de loire</option>
+                    <option value="champagne-ardennes">champagne-ardennes</option>
+                    <option value="corse">corse</option>
+                    <option value="cote d'azur">cote d\'azur</option>
+                    <option value="franche-comte">franche-comte</option>
+                    <option value="guadeloupe">guadeloupe</option>
+                    <option value="guyane">guyane</option>
+                    <option value="ile de france">ile de france</option>
+                    <option value="languedoc">languedoc</option>
+                    <option value="limousin">limousin</option>
+                    <option value="lorraine">lorraine</option>
+                    <option value="martinique">martinique</option>
+                    <option value="mayotte">mayotte</option>
+                    <option value="midi-pyrenees">midi-pyrenees</option>
+                    <option value="nord pas de calais">nord pas de calais</option>
+                    <option value="normandie">normandie</option>
+                    <option value="nouvelle calédonie">nouvelle calédonie</option>
+                    <option value="pays de la loire">pays de la loire</option>
+                    <option value="picardie">picardie</option>
+                    <option value="poitou charente">poitou charente</option>
+                    <option value="provence">provence</option>
+                    <option value="reunion">réunion</option>
+                    <option value="rhones alpes">rhones alpes</option>
+                    <option value="roussillon">roussillon</option>
+                    <option value="tahiti">tahiti</option>
+                </select>
+                <label for="rankingSelect2">top 2</label>
+                <select class="form-control" id="rankingSelect2">
+                    <option value="alsace">alsace</option>
+                    <option value="aquitaine">aquitaine</option>
+                    <option value="auvergne">auvergne</option>
+                    <option value="bourgogne">bourgogne</option>
+                    <option value="bretagne">bretagne</option>
+                    <option value="centre val de loire">centre val de loire</option>
+                    <option value="champagne-ardennes">champagne-ardennes</option>
+                    <option value="corse">corse</option>
+                    <option value="cote d'azur">cote d\'azur</option>
+                    <option value="franche-comte">franche-comte</option>
+                    <option value="guadeloupe">guadeloupe</option>
+                    <option value="guyane">guyane</option>
+                    <option value="ile de france">ile de france</option>
+                    <option value="languedoc">languedoc</option>
+                    <option value="limousin">limousin</option>
+                    <option value="lorraine">lorraine</option>
+                    <option value="martinique">martinique</option>
+                    <option value="mayotte">mayotte</option>
+                    <option value="midi-pyrenees">midi-pyrenees</option>
+                    <option value="nord pas de calais">nord pas de calais</option>
+                    <option value="normandie">normandie</option>
+                    <option value="nouvelle calédonie">nouvelle calédonie</option>
+                    <option value="pays de la loire">pays de la loire</option>
+                    <option value="picardie">picardie</option>
+                    <option value="poitou charente">poitou charente</option>
+                    <option value="provence">provence</option>
+                    <option value="reunion">réunion</option>
+                    <option value="rhones alpes">rhones alpes</option>
+                    <option value="roussillon">roussillon</option>
+                    <option value="tahiti">tahiti</option>
+                </select>
+                <label for="rankingSelect3">top 3</label>
+                <select class="form-control" id="rankingSelect3">
+                    <option value="alsace">alsace</option>
+                    <option value="aquitaine">aquitaine</option>
+                    <option value="auvergne">auvergne</option>
+                    <option value="bourgogne">bourgogne</option>
+                    <option value="bretagne">bretagne</option>
+                    <option value="centre val de loire">centre val de loire</option>
+                    <option value="champagne-ardennes">champagne-ardennes</option>
+                    <option value="corse">corse</option>
+                    <option value="cote d'azur">cote d\'azur</option>
+                    <option value="franche-comte">franche-comte</option>
+                    <option value="guadeloupe">guadeloupe</option>
+                    <option value="guyane">guyane</option>
+                    <option value="ile de france">ile de france</option>
+                    <option value="languedoc">languedoc</option>
+                    <option value="limousin">limousin</option>
+                    <option value="lorraine">lorraine</option>
+                    <option value="martinique">martinique</option>
+                    <option value="mayotte">mayotte</option>
+                    <option value="midi-pyrenees">midi-pyrenees</option>
+                    <option value="nord pas de calais">nord pas de calais</option>
+                    <option value="normandie">normandie</option>
+                    <option value="nouvelle calédonie">nouvelle calédonie</option>
+                    <option value="pays de la loire">pays de la loire</option>
+                    <option value="picardie">picardie</option>
+                    <option value="poitou charente">poitou charente</option>
+                    <option value="provence">provence</option>
+                    <option value="reunion">réunion</option>
+                    <option value="rhones alpes">rhones alpes</option>
+                    <option value="roussillon">roussillon</option>
+                    <option value="tahiti">tahiti</option>
+                </select>
+                <label for="rankingSelect4">top 4</label>
+                <select class="form-control" id="rankingSelect4">
+                    <option value="alsace">alsace</option>
+                    <option value="aquitaine">aquitaine</option>
+                    <option value="auvergne">auvergne</option>
+                    <option value="bourgogne">bourgogne</option>
+                    <option value="bretagne">bretagne</option>
+                    <option value="centre val de loire">centre val de loire</option>
+                    <option value="champagne-ardennes">champagne-ardennes</option>
+                    <option value="corse">corse</option>
+                    <option value="cote d'azur">cote d\'azur</option>
+                    <option value="franche-comte">franche-comte</option>
+                    <option value="guadeloupe">guadeloupe</option>
+                    <option value="guyane">guyane</option>
+                    <option value="ile de france">ile de france</option>
+                    <option value="languedoc">languedoc</option>
+                    <option value="limousin">limousin</option>
+                    <option value="lorraine">lorraine</option>
+                    <option value="martinique">martinique</option>
+                    <option value="mayotte">mayotte</option>
+                    <option value="midi-pyrenees">midi-pyrenees</option>
+                    <option value="nord pas de calais">nord pas de calais</option>
+                    <option value="normandie">normandie</option>
+                    <option value="nouvelle calédonie">nouvelle calédonie</option>
+                    <option value="pays de la loire">pays de la loire</option>
+                    <option value="picardie">picardie</option>
+                    <option value="poitou charente">poitou charente</option>
+                    <option value="provence">provence</option>
+                    <option value="reunion">réunion</option>
+                    <option value="rhones alpes">rhones alpes</option>
+                    <option value="roussillon">roussillon</option>
+                    <option value="tahiti">tahiti</option>
+                </select>
+                <label for="rankingSelect5">top 5</label>
+                <select class="form-control" id="rankingSelect5">
+                    <option value="alsace">alsace</option>
+                    <option value="aquitaine">aquitaine</option>
+                    <option value="auvergne">auvergne</option>
+                    <option value="bourgogne">bourgogne</option>
+                    <option value="bretagne">bretagne</option>
+                    <option value="centre val de loire">centre val de loire</option>
+                    <option value="champagne-ardennes">champagne-ardennes</option>
+                    <option value="corse">corse</option>
+                    <option value="cote d'azur">cote d\'azur</option>
+                    <option value="franche-comte">franche-comte</option>
+                    <option value="guadeloupe">guadeloupe</option>
+                    <option value="guyane">guyane</option>
+                    <option value="ile de france">ile de france</option>
+                    <option value="languedoc">languedoc</option>
+                    <option value="limousin">limousin</option>
+                    <option value="lorraine">lorraine</option>
+                    <option value="martinique">martinique</option>
+                    <option value="mayotte">mayotte</option>
+                    <option value="midi-pyrenees">midi-pyrenees</option>
+                    <option value="nord pas de calais">nord pas de calais</option>
+                    <option value="normandie">normandie</option>
+                    <option value="nouvelle calédonie">nouvelle calédonie</option>
+                    <option value="pays de la loire">pays de la loire</option>
+                    <option value="picardie">picardie</option>
+                    <option value="poitou charente">poitou charente</option>
+                    <option value="provence">provence</option>
+                    <option value="reunion">réunion</option>
+                    <option value="rhones alpes">rhones alpes</option>
+                    <option value="roussillon">roussillon</option>
+                    <option value="tahiti">tahiti</option>
+                </select>
+                <button class="btn btn-primary" onclick="saveData()">Save</button>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <!-- Utilisez Thymeleaf pour itérer sur votre liste de photos Base64 -->
+                <th:block th:each="infoCandidate : ${infosCandidates}">
+                    <div class="col-md-4">
+                        <a href="#" th:data-slide-to="0" th:data-target="'#carouselModal'"
+                           th:data-text="${infoCandidate.region}">
+                            <div class="image-container">
+                                <span class="region-name" th:text="${infoCandidate.region}"></span>
+                                <img class="img-fluid"
+                                     th:src="'data:image/png;base64,' + ${infoCandidate.photo}">
+                            </div>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -78,7 +280,7 @@
                     <ol class="carousel-indicators">
                         <li class="active" data-slide-to="0" data-target="#carouselIndicators"></li>
                         <li data-slide-to="1" data-target="#carouselIndicators"></li>
-                        <!--                        <li data-slide-to="0" data-target="#carouselIndicators"></li>-->
+                        <li data-slide-to="2" data-target="#carouselIndicators"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item un active">
@@ -91,11 +293,11 @@
                                 <img class="d-block w-100 img-fluid" style="max-height: 800px;object-fit: contain;">
                             </a>
                         </div>
-                        <!--                        <div class="carousel-item trois">-->
-                        <!--                            <a data-slide="next" href="#carouselIndicators">-->
-                        <!--                                <img class="d-block w-100 img-fluid" style="max-height: 800px;object-fit: contain;">-->
-                        <!--                            </a>-->
-                        <!--                        </div>-->
+                        <div class="carousel-item trois">
+                            <a data-slide="next" href="#carouselIndicators">
+                                <img class="d-block w-100 img-fluid" style="max-height: 800px;object-fit: contain;">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,7 +311,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
 <!-- Script pour ouvrir la modal lorsqu'on clique sur une image -->
-<script th:inline="javascript">
+<script>
     $(function() {
         $('[data-target="#carouselModal"]').click(function(e) {
             e.preventDefault();
@@ -117,7 +319,7 @@
             var text = button.data('text');
             var slideIndex = $(this).data('slide-to');
 
-            console.log("clique sur la modal pour la région : " + text);
+            console.log("Cliquez sur la modal pour la région : " + text);
 
             $.ajax({
                 type: 'GET',
@@ -131,7 +333,7 @@
                     $('#carouselModal').modal('show');
                 },
                 error: function(error) {
-                    console.error('Erreur lors de la récupération des données: ', error);
+                    console.error('Erreur lors de la récupération des données : ', error);
                 }
             });
         });
@@ -142,21 +344,58 @@
         });
 
         $('#carouselModal').on('hidden.bs.modal', function () {
-            $('#carouselModal .carousel-inner .carousel-item').removeClass('active');
-            $('#carouselModal .carousel-inner .carousel-item.un').addClass('active');
+            $('#carouselModal .carousel-inner .carousel-item').addClass('active');
+            $('#carouselModal .carousel-inner .carousel-item.un').removeClass('active');
+            $('#carouselModal .carousel-inner .carousel-item.deux').removeClass('active');
         });
 
         function updateModalContent(data) {
             // Mettez à jour le contenu de la modal avec les données récupérées
-
             console.log(data);
             $('#carouselModal .carousel-inner .carousel-item img').removeAttr('src');
-            $('#carouselModal .carousel-inner .carousel-item.un img').attr('src', 'data:image/png;base64,' + data[0].photo);
-            $('#carouselModal .carousel-inner .carousel-item.deux img').attr('src', 'data:image/png;base64,' + data[1].photo);
-<!--            $('#carouselModal .carousel-inner .carousel-item3 img').attr('src', 'data:image/png;base64,' + data[0].photo);-->
-
+            $('#carouselModal .carousel-inner .carousel-item img').attr('src', 'data:image/png;base64,' + data[0].photo);
+            $('#carouselModal .carousel-inner .carousel-item.un img').attr('src', 'data:image/png;base64,' + data[1].photo);
+            $('#carouselModal .carousel-inner .carousel-item.deux img').attr('src', 'data:image/png;base64,' + data[2].photo);
         }
     });
+
+    function saveData() {
+        // Exemple d'appel API avec AJAX
+        $.ajax({
+            url: '/classement',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                prenom: $('#firstName').val(),
+                top1: $('#rankingSelect1').val(),
+                top2: $('#rankingSelect2').val(),
+                top3: $('#rankingSelect3').val(),
+                top4: $('#rankingSelect4').val(),
+                top5: $('#rankingSelect5').val()
+            }),
+            success: function(data) {
+                console.log('Réponse de l\'API :', data);
+                // Ajoutez ici le code pour gérer la réponse de l'API si nécessaire
+            },
+            error: function(error) {
+                console.error('Erreur lors de l\'appel API :', error);
+                // Ajoutez ici le code pour gérer les erreurs de l'API si nécessaire
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
