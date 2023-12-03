@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Inclure les styles de Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="form-group">
+    <label th:for="${dropdownId}" th:text="${dropdownLabel}"></label>
+    <select class="form-control" th:id="${dropdownId}">
+        <option th:each="region : ${regions}" th:text="${region}" th:value="${region}"></option>
+    </select>
+</div>
+</body>

@@ -11,6 +11,9 @@ public class Candidates {
     private String region;
     private String photo;
     private Boolean estOfficielle;
+    
+    private String profession;
+    private int age;
 
     public String getId() {
         return id;
@@ -44,13 +47,20 @@ public class Candidates {
         this.estOfficielle = estOfficielle;
     }
 
-    @Override
-    public String toString() {
-        return "Candidates{" +
-                "id='" + id + '\'' +
-                ", region='" + region + '\'' +
-                ", photo='" + photo + '\'' +
-                ", estOfficielle=" + estOfficielle +
-                '}';
+    public String getProfession() {
+        return profession;
     }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
 }

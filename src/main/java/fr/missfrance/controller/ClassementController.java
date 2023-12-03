@@ -6,12 +6,7 @@ import fr.missfrance.dao.Classement;
 import fr.missfrance.service.ClassementService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ClassementController {
@@ -38,10 +33,10 @@ public class ClassementController {
         classementService.saveClassement(classement);
     }
 
-    @GetMapping("/classements")
-    public List<Classement> getClassements() {
-        LOGGER.info("chargement du classement");
-        return classementService.getClassements();
+    @GetMapping("/classement/{prenom}")
+    public Classement downloadClassement(@PathVariable String prenom) {
+        LOGGER.info("Récupération du classement de {}", prenom);
+        return classementService.getClassements(prenom);
     }
 
 }

@@ -1,14 +1,14 @@
 package fr.missfrance.service;
 
 import fr.missfrance.dao.Classement;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
@@ -23,11 +23,16 @@ public class ClassementService {
         mongoTemplate.save(classement, "Classement");
     }
 
-    public List<Classement> getClassements() {
-        LOGGER.info("récupéraitond des classements");
-        Query query = new Query();
+    public Classement getClassements(String prenom) {
+        LOGGER.info("récupéraiton des classements");
 
-        return mongoTemplate.find(query, Classement.class, "Classement");
+        Query query = new Query();
+        query.addCriteria(Criteria.where("prenom").is(prenom));
+        Classement classement = mongoTemplate.findOne(query, Classement.class, "Classement");
+
+        assert !ObjectUtils.isEmpty(classement);
+
+        return classement;
     }
 
 }

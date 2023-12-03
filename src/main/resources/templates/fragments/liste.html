@@ -1,0 +1,38 @@
+<div th:fragment="liste(id,number)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="row">
+        <label class="col-3" th:for="${id}" th:text="${number}"></label>
+        <select class="form-control col-9" th:id="${id}">
+            <option value="A DEFINIR">A DEFINIR</option>
+            <option value="alsace">alsace</option>
+            <option value="aquitaine">aquitaine</option>
+            <option value="auvergne">auvergne</option>
+            <option value="bourgogne">bourgogne</option>
+            <option value="bretagne">bretagne</option>
+            <option value="centre val de loire">centre val de loire</option>
+            <option value="champagne-ardennes">champagne-ardennes</option>
+            <option value="corse">corse</option>
+            <option value="cote d'azur">cote d\'azur</option>
+            <option value="franche-comte">franche-comte</option>
+            <option value="guadeloupe">guadeloupe</option>
+            <option value="guyane">guyane</option>
+            <option value="ile de france">ile de france</option>
+            <option value="languedoc">languedoc</option>
+            <option value="limousin">limousin</option>
+            <option value="lorraine">lorraine</option>
+            <option value="martinique">martinique</option>
+            <option value="mayotte">mayotte</option>
+            <option value="midi-pyrenees">midi-pyrenees</option>
+            <option value="nord pas de calais">nord pas de calais</option>
+            <option value="normandie">normandie</option>
+            <option value="nouvelle calédonie">nouvelle calédonie</option>
+            <option value="pays de la loire">pays de la loire</option>
+            <option value="picardie">picardie</option>
+            <option value="poitou charente">poitou charente</option>
+            <option value="provence">provence</option>
+            <option value="reunion">réunion</option>
+            <option value="rhones alpes">rhones alpes</option>
+            <option value="roussillon">roussillon</option>
+            <option value="tahiti">tahiti</option>
+        </select>
+    </div>
+</div>
