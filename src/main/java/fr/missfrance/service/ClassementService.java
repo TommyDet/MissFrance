@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ClassementService {
@@ -24,7 +26,7 @@ public class ClassementService {
     }
 
     public Classement getClassements(String prenom) {
-        LOGGER.info("récupéraiton des classements");
+        LOGGER.info("récupération des classements");
 
         Query query = new Query();
         query.addCriteria(Criteria.where("prenom").is(prenom));
@@ -35,4 +37,13 @@ public class ClassementService {
         return classement;
     }
 
+    public List<Classement> getAllClassements() {
+        LOGGER.info("récupéraiton des classements");
+
+        List<Classement> classements = mongoTemplate.findAll(Classement.class, "Classement");
+
+        assert !ObjectUtils.isEmpty(classements);
+
+        return classements;
+    }
 }

@@ -20,5 +20,3 @@ spring:
       host: host.docker.internal
       port: 27017
       database: test
-server:
-  port: 8080

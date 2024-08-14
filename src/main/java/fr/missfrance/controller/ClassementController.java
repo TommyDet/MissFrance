@@ -8,6 +8,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @RestController
 public class ClassementController {
 
@@ -24,19 +27,29 @@ public class ClassementController {
     @PostMapping("/classement")
     public void uploadClassement(@RequestBody String jsonString) {
         LOGGER.info("Ajout du classement : {}", jsonString);
-        Classement classement = null;
-        try {
-            classement = objectMapper.readValue(jsonString, Classement.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        if (LocalDateTime.now().isAfter(LocalDateTime.of(2023, 12, 16, 23, 00))) {
+            Classement classement = null;
+            try {
+                classement = objectMapper.readValue(jsonString, Classement.class);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+            classementService.saveClassement(classement);
+        } else {
+            LOGGER.error("Trop tard");
         }
-        classementService.saveClassement(classement);
     }
 
     @GetMapping("/classement/{prenom}")
     public Classement downloadClassement(@PathVariable String prenom) {
         LOGGER.info("Récupération du classement de {}", prenom);
         return classementService.getClassements(prenom);
+    }
+
+    @GetMapping("/classements")
+    public List<Classement> downloadAllClassement() {
+        LOGGER.info("Récupération de tous les classements");
+        return classementService.getAllClassements();
     }
 
 }

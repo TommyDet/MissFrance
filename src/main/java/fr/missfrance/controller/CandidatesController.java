@@ -1,7 +1,9 @@
 package fr.missfrance.controller;
 
 import fr.missfrance.dao.Candidates;
+import fr.missfrance.dao.Classement;
 import fr.missfrance.service.CandidateService;
+import fr.missfrance.service.ClassementService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -23,11 +25,13 @@ public class CandidatesController {
     private static final Logger LOGGER = LogManager.getLogger(CandidatesController.class);
 
     private final CandidateService candidateService;
+    private final ClassementService classementService;
 
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
-    public CandidatesController(CandidateService candidateService, MongoTemplate mongoTemplate) {
+    public CandidatesController(CandidateService candidateService, ClassementService classementService, MongoTemplate mongoTemplate) {
         this.candidateService = candidateService;
+        this.classementService = classementService;
         this.mongoTemplate = mongoTemplate;
     }
 
@@ -40,9 +44,11 @@ public class CandidatesController {
     public String getCandidates(Model model) {
 
         List<Candidates> infosCandidates = candidateService.getCandidateByOfficielle();
+        List<Classement> classements = classementService.getAllClassements();
 
         // Passage des URLs d'images comme attributs de modèle à la vue Thymeleaf
         model.addAttribute("infosCandidates", infosCandidates);
+        model.addAttribute("classements", classements);
 
         LOGGER.debug("Récupération de la liste des candidates");
         return "candidates";
@@ -65,7 +71,6 @@ public class CandidatesController {
         LOGGER.debug("Sortie dans la méthode uploadPhoto - PhotoController");
         return "redirect:/";
     }
-
 
 }
 
